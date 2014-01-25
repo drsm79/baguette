@@ -1,7 +1,7 @@
 baguette
 ========
 
-a scheduler hooked up to a flask
+a [scheduler][aps] hooked up to a [flask][flask]
 
 ## Install
 
@@ -18,3 +18,7 @@ Visit `localhost:5000/jobs` to see the scheduled jobs.
 ## Licence
 
 Apache v2.
+
+-----
+[aps]: http://pythonhosted.org/APScheduler
+[flask]: http://flask.pocoo.org/
