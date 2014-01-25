@@ -4,7 +4,7 @@ import signal
 import sys
 from functools import wraps
 from apscheduler.scheduler import Scheduler
-from flask import Flask
+from flask import Flask, jsonify
 
 
 def timing_report(f):
@@ -64,10 +64,12 @@ def hello():
 
 @app.route("/jobs")
 def jobs():
-    list_to_return = []
-    for i in sched.get_jobs():
-        list_to_return.append('%s (%s): %s' % (i.name, i.runs, i.trigger))
-    return "\n".join(list_to_return)
+    sched_jobs = sched.get_jobs()
+    jobs = {
+        "count": len(sched_jobs),
+        "jobs": [(i.name, i.runs, str(i.trigger)) for i in sched_jobs]
+    }
+    return jsonify(jobs)
 
 
 @timing_report
