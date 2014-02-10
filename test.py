@@ -20,7 +20,6 @@ def timing_report(f):
 
 
 class FileLikeLogger:
-
     def __init__(self):
         FORMAT = '[%(name)s] %(asctime)s %(levelname)s: %(message)s'
         logging.basicConfig(
@@ -85,6 +84,7 @@ def second_job_function():
 
 def status_report_job():
     sched.print_jobs(logger)
+
 
 # Schedule job_function to be called every two hours
 sched.add_interval_job(long_job_function, seconds=10)
